@@ -16,6 +16,7 @@ convnet/
 decaf/
 submission/
 cfg/
+tmp/
 darknet
 .fuse*
 
@@ -25,3 +26,19 @@ ehthumbs.db
 Icon?
 Thumbs.db
 *.swp
+
+# CMake Generated
+darknet-configure
+darknet-done
+darknet-download
+darknet-install
+darknet-mkdir
+darknet-patch
+darknet-update
+
+# Output build files
+*.a
+*.so
+
+# Giant weights file
+yolov3.weights

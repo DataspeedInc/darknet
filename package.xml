@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>darknet_ros</name>
+  <version>0.0.0</version>
+  <description>
+    Package to export darknet to other ROS packages
+  </description>
+
+  <license>BSD</license>
+  <author email="mradovnikovich@dataspeedinc.com">Micho Radovnikovich</author>
+  <maintainer email="mradovnikovich@dataspeedinc.com">Micho Radovnikovich</maintainer>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>rospy</depend>
+</package>
