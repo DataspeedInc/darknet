@@ -24,6 +24,7 @@ ExternalProject_Add(darknet
 install(
   FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/libdarknet.so
+    ${CMAKE_CURRENT_SOURCE_DIR}/yolov3.weights
   DESTINATION
     ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
