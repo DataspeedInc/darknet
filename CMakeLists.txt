@@ -9,11 +9,11 @@ catkin_python_setup()
 
 catkin_package(
   INCLUDE_DIRS include
-  LIBRARIES ${PROJECT_NAME}
+  LIBRARIES darknet
 )
 
 include(ExternalProject)
-ExternalProject_Add(darknet
+ExternalProject_Add(darknet_external
   SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}"
   PREFIX "${CMAKE_CURRENT_SOURCE_DIR}"
   STAMP_DIR "${CMAKE_CURRENT_SOURCE_DIR}"
@@ -24,9 +24,9 @@ ExternalProject_Add(darknet
   INSTALL_COMMAND ""
 )
 
-add_library(${PROJECT_NAME} SHARED IMPORTED GLOBAL)
-add_dependencies(${PROJECT_NAME} darknet)
-set_target_properties(${PROJECT_NAME} PROPERTIES
+add_library(darknet SHARED IMPORTED GLOBAL)
+add_dependencies(darknet darknet_external)
+set_target_properties(darknet PROPERTIES
   IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/libdarknet.so
   INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
@@ -35,7 +35,7 @@ install(
   FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/libdarknet.so
   DESTINATION
-    ${CATKIN_PACKAGE_SHARE_DESTINATION}
+    ${CATKIN_PACKAGE_LIB_DESTINATION}
 )
 
 install(
@@ -44,6 +44,13 @@ install(
     data
   DESTINATION
     ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
+
+install(
+  DIRECTORY
+    include/${PROJECT_NAME}/
+  DESTINATION
+    ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )
 
 catkin_install_python(

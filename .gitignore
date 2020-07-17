@@ -28,13 +28,14 @@ Thumbs.db
 *.swp
 
 # CMake Generated
-darknet-configure
-darknet-done
-darknet-download
-darknet-install
-darknet-mkdir
-darknet-patch
-darknet-update
+darknet_external-configure
+darknet_external-done
+darknet_external-download
+darknet_external-install
+darknet_external-mkdir
+darknet_external-patch
+darknet_external-update
+darknet_external-copy_to_devel
 
 # Output build files
 *.a
