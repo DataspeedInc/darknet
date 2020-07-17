@@ -7,7 +7,10 @@ find_package(catkin REQUIRED COMPONENTS
 
 catkin_python_setup()
 
-catkin_package()
+catkin_package(
+  INCLUDE_DIRS include
+  LIBRARIES ${PROJECT_NAME}
+)
 
 include(ExternalProject)
 ExternalProject_Add(darknet
@@ -21,10 +24,16 @@ ExternalProject_Add(darknet
   INSTALL_COMMAND ""
 )
 
+add_library(${PROJECT_NAME} SHARED IMPORTED GLOBAL)
+add_dependencies(${PROJECT_NAME} darknet)
+set_target_properties(${PROJECT_NAME} PROPERTIES
+  IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/libdarknet.so
+  INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
 install(
   FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/libdarknet.so
-    ${CMAKE_CURRENT_SOURCE_DIR}/yolov3.weights
   DESTINATION
     ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
